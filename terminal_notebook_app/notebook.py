@@ -1,4 +1,3 @@
-from ctypes.wintypes import tagSIZE
 import datetime
 
 # Store the next available id for all new notes.
@@ -12,10 +11,6 @@ class Note:
     """
 
     def __init__(self, memo: str, tag: str = "") -> None:
-        """
-        Initialize a note with memo and optional space separated tags.
-        Automatically set the note's creation date and a unique id.
-        """
         self.memo = memo
         self.tag = tag
         self.creation_date = datetime.date.today()
@@ -23,11 +18,15 @@ class Note:
         last_id += 1
         self.id = last_id
 
-    def match(self, filter):
+    def match(self, filter: str) -> bool:
         """
-        Determine if this note matches the filter text. Return True if it
-        matches, False otherwise.
+        Determine if this note matches the filter text.
         Search is case-sensitive and matchs both text and tags.
+        Args:
+            filter (str): string to be used as a filter.
+
+        Returns:
+            bool: Return True if it matches, False otherwise.
         """
         return filter in self.memo or filter in self.tag
 
