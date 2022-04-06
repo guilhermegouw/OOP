@@ -44,8 +44,8 @@ class Menu:
             else:
                 print(f"{choice} is not a valid choice.")
 
-    def show_tasks(self, task=None):
-        if not task:
+    def show_tasks(self, tasks=None):
+        if not tasks:
             tasks = self.to_do_list.tasks
         for task in tasks:
             print(f"{task.id}: {task.tag}\n{task.content}")
@@ -53,7 +53,7 @@ class Menu:
     def search_tasks(self):
         filter = input("Search for: ")
         tasks = self.to_do_list.search(filter)
-        self.show_notes(tasks)
+        self.show_tasks(tasks)
 
     def add_task(self):
         content = input("Enter a content: ")
