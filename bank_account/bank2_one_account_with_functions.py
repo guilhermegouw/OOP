@@ -1,6 +1,3 @@
-from tkinter.messagebox import NO
-
-
 account_name = ""
 account_balance = 0
 account_password = ""
