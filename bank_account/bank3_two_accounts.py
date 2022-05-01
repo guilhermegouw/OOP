@@ -1,10 +1,11 @@
-account_0_name = ''
+account_0_name = ""
 account_0_balance = 0
-account_0_password = ''
-account_1_name = ''
+account_0_password = ""
+account_1_name = ""
 account_1_balance = 0
-account_1_password = ''
+account_1_password = ""
 n_accounts = 0
+
 
 def new_account(account_number, name, balance, password):
     global account_0_name, account_0_balance, account_0_password
@@ -19,30 +20,32 @@ def new_account(account_number, name, balance, password):
         account_1_balance = balance
         account_1_password = password
 
+
 def show(account_number, password):
     global account_0_name, account_0_balance, account_0_password
     global account_1_name, account_1_balance, account_1_password
 
     if account_number == 0:
         if password != account_0_password:
-            print('Incorrect password')
+            print("Incorrect password")
             return None
-        if account_0_name != '':
-            print('Account 0')
-            print(f'Name: {account_0_name}')
-            print(f'Balance: {account_0_balance}')
-            print(f'Password: {account_0_password}')
+        if account_0_name != "":
+            print("Account 0")
+            print(f"Name: {account_0_name}")
+            print(f"Balance: {account_0_balance}")
+            print(f"Password: {account_0_password}")
             print()
     if account_number == 1:
         if password != account_1_password:
-            print('Incorrect password')
+            print("Incorrect password")
             return None
-        if account_1_name != '':
-            print('Account 1')
-            print(f'Name: {account_1_name}')
-            print(f'Balance: {account_1_balance}')
-            print(f'Password: {account_1_password}')
+        if account_1_name != "":
+            print("Account 1")
+            print(f"Name: {account_1_name}")
+            print(f"Balance: {account_1_balance}")
+            print(f"Password: {account_1_password}")
             print()
+
 
 def get_balance(account_number, password):
     global account_0_name, account_0_balance, account_0_password
@@ -50,14 +53,15 @@ def get_balance(account_number, password):
 
     if account_number == 0:
         if password != account_0_password:
-            print('Incorrect password')
+            print("Incorrect password")
             return None
         return account_0_balance
     if account_number == 1:
         if password != account_1_password:
-            print('Incorrect password')
+            print("Incorrect password")
             return None
         return account_1_balance
+
 
 def deposit(account_number, password, amount):
     global account_0_name, account_0_balance, account_0_password
@@ -80,6 +84,7 @@ def deposit(account_number, password, amount):
             return None
         account_1_balance += amount
         return account_1_balance
+
 
 def withdrawl(account_number, password, amount):
     global account_0_name, account_0_balance, account_0_password
@@ -108,6 +113,7 @@ def withdrawl(account_number, password, amount):
             return None
         account_1_balance -= amount
         return account_1_balance
+
 
 new_account(0, "Guilherme", 100, "secret")
 new_account(1, "Luciana", 200, "secret")
