@@ -15,7 +15,6 @@ And the actions that the TV must provide include:
 - Raise and lower the volume
 - Change the channel up and down
 - Mute and unmute the sound
-- Get information about the current settings
 - Go to a specified channel
 """
 class TV:
@@ -27,15 +26,31 @@ class TV:
         self.current_volume = 1
     
     def turn_tv_on(self):
-        self.in_on = True
+        self.is_on = True
+    
+    def turn_tv_off(self):
+        self.is_on = False
     
     def raise_volume(self):
-        self.current_volume += 1
+        if self.current_volume < 10:
+            self.current_volume += 1
+    
+    def decrease_volume(self):
+        if self.current_volume > 1:
+            self.current_volume -= 1
     
     def change_channel(self, channel):
-        if channel not in self.channels:
-            print('Channel not available')
-        self.current_channel = channel
+        if channel in self.channels:
+            self.current_channel = channel
 
-    def change_channel_up_and_down(self):
-        pass
+    def change_channel_up_and_down(self, direction):
+        if direction == 'up' and self.current_channel < 10:
+            self.current_channel += 1
+        if direction == 'down' and self.current_channel > 1:
+            self.current_channel -= 1
+    
+    def mute_the_sound(self):
+        self.is_muted = True
+    
+    def unmute_the_sound(self):
+        self.is_muted = False
