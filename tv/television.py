@@ -21,8 +21,8 @@ class TV:
     def __init__(self):
         self.is_on = False
         self.is_muted = False
-        self.channels = [1, 2, 3, 4, 5, 6, 7, 8, 8, 9, 10, 11, 12]
-        self.current_channel = 1
+        self.channels = [1, 2, 4, 7, 11, 16, 22, 29, 38, 48]
+        self.channel_index = 0
         self.current_volume = 1
     
     def turn_tv_on(self):
@@ -41,16 +41,27 @@ class TV:
     
     def change_channel(self, channel):
         if channel in self.channels:
-            self.current_channel = channel
+            self.channel_index = self.channels.index(channel)
 
-    def change_channel_up_and_down(self, direction):
-        if direction == 'up' and self.current_channel < 10:
-            self.current_channel += 1
-        if direction == 'down' and self.current_channel > 1:
-            self.current_channel -= 1
+    def change_channel_up(self):
+        if self.channel_index < len(self.channels):
+            self.channel_index += 1
+        else:
+            self.channel_index = 0
+
+    def change_channel_down(self):
+        if self.channel_index > 0:
+            self.channel_index -= 1
+        else:
+            self.channel_index = len(self.channels)
     
     def mute_the_sound(self):
         self.is_muted = True
     
     def unmute_the_sound(self):
         self.is_muted = False
+
+
+if __name__=='__main__':
+    tv = TV()
+    tv.change_channel(16)

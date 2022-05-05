@@ -41,48 +41,48 @@ class TvTests(unittest.TestCase):
         """
         current_channel must change to selected one.
         """
-        self.tv.change_channel(5)
-        self.assertEqual(self.tv.current_channel, 5)
+        self.tv.change_channel(7)
+        self.assertEqual(self.tv.channel_index, 3)
 
     def test_change_to_not_existing_channel(self):
         """
-        Since current_channel is initialized as 1 and channel 15 does exist.
-        current_channel must keep as 1.
+        Since channel_index is initialized as 0 and channel 15 doesn't exist.
+        channel_index must keep as 0.
         """
         self.tv.change_channel(15)
-        self.assertEqual(self.tv.current_channel, 1)
+        self.assertEqual(self.tv.channel_index, 0)
 
     def test_change_channel_up(self):
         """
-        Since current_cannel is intialized as 1.
-        current_channel must return 2.
+        Since channel_index is intialized as 0.
+        channel_index must return 1.
         """
-        self.tv.change_channel_up_and_down('up')
-        self.assertEqual(self.tv.current_channel, 2)
+        self.tv.change_channel_up()
+        self.assertEqual(self.tv.channel_index, 1)
 
-    def test_change_channel_up_when_current_channel_is_10(self):
+    def test_change_channel_up_when_channel_index_is_the_latest(self):
         """
-        current_channel must return 10.
+        channel_index must return 0.
         """
-        self.tv.current_channel = 10
-        self.tv.change_channel_up_and_down('up')
-        self.assertEqual(self.tv.current_channel, 10)
-
-    def test_change_channel_down_when_current_channel_is_1(self):
-        """
-        current_channel must return 1.
-        """
-        self.tv.change_channel_up_and_down('down')
-        self.assertEqual(self.tv.current_channel, 1)
+        self.tv.channel_index = -1
+        self.tv.change_channel_up()
+        self.assertEqual(self.tv.channel_index, 0)
 
     def test_change_channel_down(self):
         """
-        when current_channel is 2
-        current_channel must return 1.
+        channel_index must return 0.
         """
-        self.tv.current_channel = 2
-        self.tv.change_channel_up_and_down('down')
-        self.assertEqual(self.tv.current_channel, 1)
+        self.tv.channel_index = 1
+        self.tv.change_channel_down()
+        self.assertEqual(self.tv.channel_index, 0)
+
+    def test_change_channel_down_when_channel_index_is_0(self):
+        """
+        channel_index must return len(self.tv.channels).
+        """
+        self.tv.channel_index = 0
+        self.tv.change_channel_down()
+        self.assertEqual(self.tv.channel_index, len(self.tv.channels))
 
     def test_mute_the_sound(self):
         """
