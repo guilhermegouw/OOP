@@ -1,5 +1,6 @@
 class DimmerSwitch:
-    def __init__(self):
+    def __init__(self, label):
+        self.label = label
         self.switch_state = False
         self.brightness_level = 0
 

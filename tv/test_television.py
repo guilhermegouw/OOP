@@ -4,7 +4,7 @@ from television import TV
 
 class TvTests(unittest.TestCase):
     def setUp(self):
-        self.tv = TV()
+        self.tv = TV('Test Brand', 'Test location')
     
     def test_turn_tv_on(self):
         """

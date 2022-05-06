@@ -18,7 +18,9 @@ And the actions that the TV must provide include:
 - Go to a specified channel
 """
 class TV:
-    def __init__(self):
+    def __init__(self, brand, location):
+        self.brand = brand
+        self.location = location
         self.is_on = False
         self.is_muted = False
         self.channels = [1, 2, 4, 7, 11, 16, 22, 29, 38, 48]

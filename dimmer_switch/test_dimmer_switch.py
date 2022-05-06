@@ -5,7 +5,7 @@ from dimmer_switch import DimmerSwitch
 
 class DimmerSwitchTests(unittest.TestCase):
     def setUp(self):
-        self.dimmer = DimmerSwitch()
+        self.dimmer = DimmerSwitch('Test Dimmer')
 
     def test_turn_on(self):
         """
